@@ -6,5 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 
 #Include, IntelliJHotKey.ahk
+#IfWinActive
 #Include, ChangeApplicationHotkeys.ahk
+#IfWinActive
 #Include, SqlHotKey.ahk

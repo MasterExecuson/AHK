@@ -5,5 +5,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance, Force  
 
 
-#Include, GIT HOTSTRINGS.ahk
 #Include, SQL HOTSTRINGS.ahk
+
+#IfWinActive
+#Include, GIT HOTSTRINGS.ahk
