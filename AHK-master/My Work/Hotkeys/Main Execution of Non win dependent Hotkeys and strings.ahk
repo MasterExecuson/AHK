@@ -4,23 +4,14 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance, Force  
 
-#IfWinActive, ahk_exe idea64.exe 
-#Include, RemoveJavaStringbreakformating.ahk
 
+#Include, IntelliJHotKey.ahk
+#IfWinActive
+#Include, ChangeApplicationHotkeys.ahk
+#IfWinActive
+#Include, ../Hotstrings/GITHOTSTRINGS.ahk
 
-^up::
-    RemoveFormattingUp()
-return
+#Include, ../Hotstrings/Bem vindo ao Futuro.ahk
 
-^down::
-    RemoveFormattingDown()
-return
+#Include, lettersCapitalization.ahk
 
-#IfWinActive,ahk_class CiscoUIFrame
-^up::
-    RemoveFormattingUp()
-return
-
-^down::
-    RemoveFormattingDown()
-return

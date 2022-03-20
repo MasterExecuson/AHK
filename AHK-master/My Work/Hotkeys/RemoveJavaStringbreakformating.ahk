@@ -32,7 +32,7 @@ RemoveFormattingDown(){
     oldClipboard := Clipboard
     CRLF := "`r`n"
     Send, {home}{end}{CtrlDown}{left 2}{CtrlUp}
-    Send, {ShiftDown}{right 3}{CtrlDown}{right 2}{CtrlUp}{ShiftUp}
+    Send, {ShiftDown}{right 1}{CtrlDown}{right 3}{CtrlUp}{ShiftUp}
    
     getClipBoard()
     
