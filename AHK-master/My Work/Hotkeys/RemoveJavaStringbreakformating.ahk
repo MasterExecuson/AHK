@@ -4,6 +4,7 @@ SendMode Input  ; Recommended for new scripts due to its superior speed and reli
 SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 #SingleInstance, Force  
 
+#Include, ../Hotkeys/utils.ahk
 
 
 
@@ -32,7 +33,7 @@ RemoveFormattingDown(){
     oldClipboard := Clipboard
     CRLF := "`r`n"
     Send, {home}{end}{CtrlDown}{left 2}{CtrlUp}
-    Send, {ShiftDown}{right 3}{CtrlDown}{right 2}{CtrlUp}{ShiftUp}
+    Send, {ShiftDown}{right 1}{CtrlDown}{right 3}{CtrlUp}{ShiftUp}
    
     getClipBoard()
     
@@ -49,14 +50,3 @@ RemoveFormattingDown(){
     return
 }
 
-
-getClipBoard(){
-    Clipboard =
-    Send, ^C
-    Sleep, 50
-    if (!Clipboard){
-        Send ^c
-        ClipWait
-    }
-    return
-}

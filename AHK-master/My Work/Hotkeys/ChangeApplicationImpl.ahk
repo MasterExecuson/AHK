@@ -4,18 +4,6 @@ SendMode Input ; Recommended for new scripts due to its superior speed and relia
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 #SingleInstance, Force 
 
-switchExplorerTabs()
-{
-  IfWinNotExist, ahk_class CabinetWClass
-    Run, explorer.exe
-  GroupAdd, taranexplorers, ahk_class CabinetWClass
-  if WinActive("ahk_exe explorer.exe"){
-    GroupActivate, taranexplorers, r
-  }else{
-    WinActivate ahk_class CabinetWClass ;you have to use WinActivatebottom if you didn't create a window group.
-  }
-	return
-}
 
 switchChormeTabs(){
   IfWinNotExist, ahk_exe chrome.exe
@@ -27,25 +15,39 @@ switchChormeTabs(){
   }
 }
 
-switchChormePages(){
-  IfWinNotExist, ahk_exe chrome.exe
-    Run, chrome.exe 
-	GroupAdd, viniChromes, ahk_exe chrome.exe
-  if WinActive("ahk_exe chrome.exe"){
-    GroupActivate, viniChromes, r
+switchOutlookTabs(){
+  IfWinNotExist, ahk_exe OUTLOOK.EXE
+    Run, OUTLOOK.EXE 
+  if WinActive("ahk_exe OUTLOOK.EXE"){
+    if WinActive("Inbox"){
+      Sendinput ^{2}
+    }else{
+      Sendinput ^{1}
+    }
   }else{
-    WinActivate ahk_exe chrome.exe
+    WinActivate ahk_exe OUTLOOK.EXE
   }
 }
 
-switchIntelliJPages(){
-  IfWinNotExist, ahk_class SunAwtFrame
-    Run, idea64.exe
-	GroupAdd, viniIdeas, ahk_class SunAwtFrame
-   if WinActive("ahk_exe idea64.exe"){
-    GroupActivate, viniIdeas, r
+switchExe(exe,appGroup){
+  IfWinNotExist, ahk_exe %exe%
+    Run, %exe%
+	GroupAdd, %appGroup%, ahk_exe  %exe%
+  if WinActive("ahk_exe " exe){
+    GroupActivate, %appGroup%, r
   }else{
-    WinActivate ahk_class SunAwtFrame ;you have to use WinActivatebottom if you didn't create a window group.
+    WinActivate ahk_exe %exe% ;you have to use WinActivatebottom if you didn't create a window group.
+  }
+}
+
+switchClass(appClass,exe,appGroup){
+  IfWinNotExist, ahk_class %appClass%
+    Run, %exe%
+	GroupAdd, %appGroup%, ahk_class  %appClass%
+   if WinActive("ahk_exe " exe){
+    GroupActivate, %appGroup%, r
+  }else{
+    WinActivate ahk_class %appClass% ;you have to use WinActivatebottom if you didn't create a window group.
   }
 }
 
