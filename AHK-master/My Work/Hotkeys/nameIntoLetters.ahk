@@ -4,7 +4,7 @@ SendMode Input ; Recommended for new scripts due to its superior speed and relia
 SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 #SingleInstance, Force 
 
- 
+ #Include utils.ahk
 
 +F7::   
 
@@ -25,16 +25,16 @@ SetWorkingDir %A_ScriptDir% ; Ensures a consistent starting directory.
 RETURN
 
 
-getClipBoard(){
-    Clipboard =
-    Send, ^C
-    Sleep, 50
-    if (!Clipboard){
-        Send ^c
-        ClipWait
-    }
-    return
-}
+; getClipBoard(){
+;     Clipboard =
+;     Send, ^C
+;     Sleep, 50
+;     if (!Clipboard){
+;         Send ^c
+;         ClipWait
+;     }
+;     return
+; }
 
 
 

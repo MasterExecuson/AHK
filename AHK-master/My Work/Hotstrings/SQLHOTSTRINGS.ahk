@@ -11,6 +11,12 @@ SetTitleMatchMode, RegEx
 Hotstring("EndChars", "`t")
 SetKeyDelay, 0
 
+
+
+:C:R::    
+    Send, {CtrlDown}{Home}{CtrlUp}begin tran{Enter}{Enter}{CtrlDown}{End}{CtrlUp}{Enter}{Enter}{Enter}rollback tran
+Return
+
 :C:S::    
     Send, SELECT * FROM table{ShiftDown}{CtrlDown}{Left}{ShiftUp}{CtrlUp}
 Return
@@ -71,4 +77,6 @@ Return
 
 	return
 return
+
+
 

@@ -15,6 +15,20 @@ switchChormeTabs(){
   }
 }
 
+switchOutlookTabs(){
+  IfWinNotExist, ahk_exe OUTLOOK.EXE
+    Run, OUTLOOK.EXE 
+  if WinActive("ahk_exe OUTLOOK.EXE"){
+    if WinActive("Inbox"){
+      Sendinput ^{2}
+    }else{
+      Sendinput ^{1}
+    }
+  }else{
+    WinActivate ahk_exe OUTLOOK.EXE
+  }
+}
+
 switchExe(exe,appGroup){
   IfWinNotExist, ahk_exe %exe%
     Run, %exe%
@@ -29,13 +43,11 @@ switchExe(exe,appGroup){
 switchClass(appClass,exe,appGroup){
   IfWinNotExist, ahk_class %appClass%
     Run, %exe%
-	GroupAdd, appGroup, ahk_class  %appClass%
+	GroupAdd, %appGroup%, ahk_class  %appClass%
    if WinActive("ahk_exe " exe){
-    GroupActivate, appGroup, r
+    GroupActivate, %appGroup%, r
   }else{
     WinActivate ahk_class %appClass% ;you have to use WinActivatebottom if you didn't create a window group.
   }
 }
-
-
 
