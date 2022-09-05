@@ -69,6 +69,22 @@ return
 Send, git bisect start
 Return
 
+::gcc::
+Send, git checkout -b{Space}{Left 1}{Right 1}
+Return
+
+::gmd::
+Send, git merge Origin/develop
+Return
+
+::gcd::
+Send, git checkout develop{enter}
+Return
+
+::gp::
+Send, git pull {enter}
+Return
+
 ::gbr:: 
 Send, git bisect bad ;r » reproved
 Return
@@ -83,6 +99,12 @@ return
 
 ::grba::
 Send, git rebase -i --autosquash
+return
+
+
+::gro::
+Send, git rebase --onto TO_BRANCH from_COMMIT to_COMMIT
+;git rebase --onto master server client
 return
 
 
