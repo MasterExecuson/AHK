@@ -11,8 +11,7 @@ SetTitleMatchMode, RegEx
 Hotstring("EndChars", "`t")
 SetKeyDelay, 0
 
-
-
+	
 :C:R::    
     Send, {CtrlDown}{Home}{CtrlUp}begin tran{Enter}{Enter}{CtrlDown}{End}{CtrlUp}{Enter}{Enter}{Enter}rollback tran
 Return
@@ -31,6 +30,10 @@ Return
 
 :C:I::    
     Send, INSERT INTO tableName (column1, column2) VALUES (value1, value2) {Left 44}{ShiftDown}{CtrlDown}{Left}{ShiftUp}{CtrlUp}
+Return
+
+:C:C::    
+    Send, CREATE TABLE tableName ({Enter}{space 24}id int NOT NULL PRIMARY KEY,{Enter}column1 varchar(255) NOT NULL UNIQUE){Up 2}{Left 2}{ShiftDown}{CtrlDown}{Left}{ShiftUp}{CtrlUp} 
 Return
 
 :C:W::
